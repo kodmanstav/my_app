@@ -1,0 +1,31 @@
+{
+  "3fa85f64-5717-4562-b3fc-2c963f66afa6": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "hi"
+      },
+      {
+        "role": "assistant",
+        "content": "Hello! How can I help you today?"
+      },
+      {
+        "role": "user",
+        "content": "12+12?"
+      },
+      {
+        "role": "assistant",
+        "content": "Result: 24"
+      },
+      {
+        "role": "user",
+        "content": "what we talked about?"
+      },
+      {
+        "role": "assistant",
+        "content": "You greeted me twice, and then you asked what 12 + 12 is. I answered that the result is 24. Now you’re asking what we talked about. Would you like a summary or more details?"
+      }
+    ],
+    "lastResponseId": "resp_0cd337e093405e4d0069590d96de4c81959130a5f93d37f4d5"
+  }
+}

@@ -1,24 +1,34 @@
-import express from 'express';
-import type { Request, Response } from 'express';
-import { chatController } from './controllers/chat.controller';
-import { reviewController } from './controllers/review.controller';
+// packages/server/routes.ts
+import { Router } from 'express';
+import { z } from 'zod';
+import { chatService } from './services/chat.service';
 
-const router = express.Router();
+const router = Router();
 
-router.get('/', (req: Request, res: Response) => {
-   res.send('Hello World!');
+const chatSchema = z.object({
+   prompt: z.string().min(1),
+   conversationId: z.string().uuid(),
 });
 
-router.get('/api/hello', (req: Request, res: Response) => {
-   res.json({ message: 'Hello World!' });
+router.post('/api/chat', async (req, res) => {
+   const parsed = chatSchema.safeParse(req.body);
+
+   if (!parsed.success) {
+      return res.status(400).json({
+         error: 'Bad Request',
+         details: parsed.error.flatten(),
+      });
+   }
+
+   const { prompt, conversationId } = parsed.data;
+
+   try {
+      const result = await chatService.sendMessage(prompt, conversationId);
+      return res.json({ message: result.message });
+   } catch (err) {
+      console.error('[routes] /api/chat error:', err);
+      return res.status(500).json({ error: 'Internal Server Error' });
+   }
 });
-
-router.post('/api/chat', chatController.sendMessage);
-
-router.get('/api/products/:id/reviews', reviewController.getReviews);
-router.post(
-   '/api/products/:id/reviews/summarize',
-   reviewController.summarizeReviews
-);
 
 export default router;

@@ -1,43 +1,49 @@
-import fs from 'fs';
-import path from 'path';
+// packages/server/services/chat.service.ts
 import { conversationRepository } from '../repositories/conversation.repository';
-import template from '../prompts/ChatBot.txt';
-import { llmClient } from '../llm/client';
-// Implementation detail
-
-const parkInfo = fs.readFileSync(
-   path.join(__dirname, '..', 'prompts', 'WonderWorld.md'),
-   'utf-8'
-);
-const instructions = template.replace('{{parkInfo}}', parkInfo);
+import { routeMessage } from './router.service';
 
 type ChatResponse = {
    id: string;
    message: string;
 };
 
-// Public interface
-// Leaky abstraction
 export const chatService = {
    async sendMessage(
       prompt: string,
       conversationId: string
    ): Promise<ChatResponse> {
-      const response = await llmClient.generateText({
-         model: 'gpt-4o-mini',
-         instructions,
-         prompt,
-         temperature: 0.2,
-         maxTokens: 200,
-         previousResponseId:
-            conversationRepository.getLastResponseId(conversationId),
-      });
+      // ✅ Reset command required by assignment
+      if (prompt.trim() === '/reset') {
+         await conversationRepository.resetAll();
+         return {
+            id: crypto.randomUUID(),
+            message: 'History reset. Starting a fresh chat.',
+         };
+      }
 
-      conversationRepository.setLastResponseId(conversationId, response.id);
+      const context = conversationRepository.getContext(conversationId);
+      const previousResponseId =
+         conversationRepository.getLastResponseId(conversationId);
+
+      const routed = await routeMessage(prompt, context, previousResponseId);
+
+      // Save turn to memory (Persistence Part B requirement)
+      conversationRepository.addTurn(conversationId, prompt, routed.message);
+
+      // Only update LLM chain id when we actually used LLM (general)
+      if (routed.responseId) {
+         conversationRepository.setLastResponseId(
+            conversationId,
+            routed.responseId
+         );
+      }
+
+      // Save after every interaction
+      await conversationRepository.save();
 
       return {
-         id: response.id,
-         message: response.text,
+         id: crypto.randomUUID(),
+         message: routed.message,
       };
    },
 };
