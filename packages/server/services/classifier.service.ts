@@ -1,56 +1,63 @@
 // packages/server/services/classifier.service.ts
-import fs from 'fs';
-import path from 'path';
 import { llmClient } from '../llm/client';
+import { ROUTER_PROMPT } from '../prompts';
 
-export type IntentResult = {
-   intent: 'weather' | 'math' | 'exchange' | 'general';
-   city: string | null;
-   expression: string | null;
-   currencyCode: string | null;
+export type RouterDecision = {
+   intent: 'getWeather' | 'calculateMath' | 'getExchangeRate' | 'generalChat';
+   parameters: Record<string, any>;
+   confidence: number;
 };
 
-const classifierPrompt = fs.readFileSync(
-   path.join(__dirname, '../prompts/classifier.txt'),
-   'utf-8'
-);
+function clamp01(n: number): number {
+   if (Number.isNaN(n)) return 0;
+   if (n < 0) return 0;
+   if (n > 1) return 1;
+   return n;
+}
 
-function normalizeIntent(x: any): IntentResult['intent'] {
-   return x === 'weather' || x === 'math' || x === 'exchange' || x === 'general'
+function safeParseJson(text: string): any | null {
+   try {
+      return JSON.parse(text);
+   } catch {
+      return null;
+   }
+}
+
+function normalizeIntent(x: any): RouterDecision['intent'] {
+   return x === 'getWeather' ||
+      x === 'calculateMath' ||
+      x === 'getExchangeRate' ||
+      x === 'generalChat'
       ? x
-      : 'general';
+      : 'generalChat';
 }
 
-function safeString(x: any): string | null {
-   return typeof x === 'string' && x.trim().length > 0 ? x.trim() : null;
-}
-
-export async function classifyIntent(userInput: string): Promise<IntentResult> {
+export async function classifyIntent(
+   userInput: string
+): Promise<RouterDecision> {
    const response = await llmClient.generateText({
       model: 'gpt-4.1',
-      instructions: classifierPrompt,
+      instructions: ROUTER_PROMPT,
       prompt: userInput,
       temperature: 0,
-      maxTokens: 120,
-      // ❗️IMPORTANT: no previousResponseId here (classifier must be stateless)
+      maxTokens: 250,
+      // IMPORTANT: no previousResponseId for router/classifier (stateless)
    });
 
-   let parsed: any;
-   try {
-      parsed = JSON.parse(response.text);
-   } catch {
-      return {
-         intent: 'general',
-         city: null,
-         expression: null,
-         currencyCode: null,
-      };
+   // דרישת המטלה: להדפיס לקונסול את ה-JSON הגולמי
+   console.log('[router] raw json from LLM:', response.text);
+
+   const parsed = safeParseJson(response.text);
+   if (!parsed) {
+      return { intent: 'generalChat', parameters: {}, confidence: 0.4 };
    }
 
-   return {
-      intent: normalizeIntent(parsed.intent),
-      city: safeString(parsed.city),
-      expression: safeString(parsed.expression),
-      currencyCode: safeString(parsed.currencyCode)?.toUpperCase() ?? null,
-   };
+   const intent = normalizeIntent(parsed.intent);
+   const parameters =
+      parsed.parameters && typeof parsed.parameters === 'object'
+         ? parsed.parameters
+         : {};
+   const confidence = clamp01(Number(parsed.confidence));
+
+   return { intent, parameters, confidence };
 }

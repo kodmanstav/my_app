@@ -12,7 +12,6 @@ export const chatService = {
       prompt: string,
       conversationId: string
    ): Promise<ChatResponse> {
-      // ✅ Reset command required by assignment
       if (prompt.trim() === '/reset') {
          await conversationRepository.resetAll();
          return {
@@ -27,10 +26,8 @@ export const chatService = {
 
       const routed = await routeMessage(prompt, context, previousResponseId);
 
-      // Save turn to memory (Persistence Part B requirement)
       conversationRepository.addTurn(conversationId, prompt, routed.message);
 
-      // Only update LLM chain id when we actually used LLM (general)
       if (routed.responseId) {
          conversationRepository.setLastResponseId(
             conversationId,
@@ -38,12 +35,8 @@ export const chatService = {
          );
       }
 
-      // Save after every interaction
       await conversationRepository.save();
 
-      return {
-         id: crypto.randomUUID(),
-         message: routed.message,
-      };
+      return { id: crypto.randomUUID(), message: routed.message };
    },
 };

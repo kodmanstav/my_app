@@ -5,31 +5,84 @@ import { getWeather } from './weather.service';
 import { calculateMath } from './math.service';
 import { getExchangeRate } from './exchange.service';
 import { generalChat } from './general-chat.service';
+import { translateWordProblemToExpression } from './math-translator.service';
 
-export type RouteResult =
-   | { message: string; responseId?: string }
-   | { message: string; responseId: string };
+export type RouteResult = { message: string; responseId?: string };
+
+function upper3(x: any): string | null {
+   if (typeof x !== 'string') return null;
+   const v = x.trim().toUpperCase();
+   return /^[A-Z]{3}$/.test(v) ? v : null;
+}
 
 export async function routeMessage(
    userInput: string,
    context: ChatMessage[],
    previousResponseId?: string
 ): Promise<RouteResult> {
-   const intent = await classifyIntent(userInput);
+   const decision = await classifyIntent(userInput);
 
-   if (intent.intent === 'weather' && intent.city) {
-      return { message: await getWeather(intent.city) };
+   console.log('[router] decision:', decision);
+
+   // אם ממש לא בטוח – fallback ל-generalChat
+   if (decision.confidence < 0.45) {
+      const r = await generalChat(context, userInput, previousResponseId);
+      return { message: r.message, responseId: r.responseId };
    }
 
-   if (intent.intent === 'math' && intent.expression) {
-      return { message: calculateMath(intent.expression) };
+   if (decision.intent === 'getWeather') {
+      const city =
+         typeof decision.parameters?.city === 'string'
+            ? decision.parameters.city
+            : null;
+      if (!city) {
+         const r = await generalChat(context, userInput, previousResponseId);
+         return { message: r.message, responseId: r.responseId };
+      }
+      return { message: await getWeather(city) };
    }
 
-   if (intent.intent === 'exchange' && intent.currencyCode) {
-      return { message: getExchangeRate(intent.currencyCode) };
+   if (decision.intent === 'getExchangeRate') {
+      const from = upper3(decision.parameters?.from);
+      const to = upper3(decision.parameters?.to) ?? 'ILS';
+      if (!from) {
+         const r = await generalChat(context, userInput, previousResponseId);
+         return { message: r.message, responseId: r.responseId };
+      }
+      return { message: getExchangeRate(from, to) };
    }
 
-   // default: LLM chat
-   const result = await generalChat(context, userInput, previousResponseId);
-   return { message: result.message, responseId: result.responseId };
+   if (decision.intent === 'calculateMath') {
+      const expression =
+         typeof decision.parameters?.expression === 'string'
+            ? decision.parameters.expression
+            : null;
+      const textProblem =
+         typeof decision.parameters?.textProblem === 'string'
+            ? decision.parameters.textProblem
+            : null;
+
+      if (expression && expression.trim()) {
+         return { message: calculateMath(expression) };
+      }
+
+      if (textProblem && textProblem.trim()) {
+         const translated = await translateWordProblemToExpression(textProblem);
+         if (!translated.expression) {
+            return {
+               message:
+                  'I could not translate the word problem into a safe math expression.',
+            };
+         }
+         return { message: calculateMath(translated.expression) };
+      }
+
+      // fallback
+      const r = await generalChat(context, userInput, previousResponseId);
+      return { message: r.message, responseId: r.responseId };
+   }
+
+   // generalChat
+   const r = await generalChat(context, userInput, previousResponseId);
+   return { message: r.message, responseId: r.responseId };
 }

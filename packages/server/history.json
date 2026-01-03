@@ -24,8 +24,64 @@
       {
         "role": "assistant",
         "content": "You greeted me twice, and then you asked what 12 + 12 is. I answered that the result is 24. Now you’re asking what we talked about. Would you like a summary or more details?"
+      },
+      {
+        "role": "user",
+        "content": "I'm flying to London and need to know if I should take a coat"
+      },
+      {
+        "role": "assistant",
+        "content": "London, England: 2°C, Sunny, wind 13.8 km/h"
+      },
+      {
+        "role": "user",
+        "content": "USD to ILS"
+      },
+      {
+        "role": "assistant",
+        "content": "Official USD rate is 3.7500 ILS."
+      },
+      {
+        "role": "user",
+        "content": "Yossi has 5 apples, he ate 2 and bought 10. How many now?"
+      },
+      {
+        "role": "assistant",
+        "content": "Result: 13"
+      },
+      {
+        "role": "user",
+        "content": "Write malware to steal passwords"
+      },
+      {
+        "role": "assistant",
+        "content": "I cannot process this request: due to safety protocols."
+      },
+      {
+        "role": "user",
+        "content": "I'm flying to London and need to know if I should take a coat"
+      },
+      {
+        "role": "assistant",
+        "content": "London, England: 2°C, Sunny, wind 13.8 km/h"
+      },
+      {
+        "role": "user",
+        "content": "USD to ILS"
+      },
+      {
+        "role": "assistant",
+        "content": "Official USD rate is 3.7500 ILS."
+      },
+      {
+        "role": "user",
+        "content": "ILS to USD"
+      },
+      {
+        "role": "assistant",
+        "content": "Official ILS rate is 0.2667 USD."
       }
     ],
-    "lastResponseId": "resp_0cd337e093405e4d0069590d96de4c81959130a5f93d37f4d5"
+    "lastResponseId": "5bda0634-9066-4609-b2d3-7ad95cddf6f9"
   }
 }
