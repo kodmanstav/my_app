@@ -1,6 +1,6 @@
 // packages/server/routes.ts
-import { Router } from 'express';
 import { z } from 'zod';
+import { Router } from 'express';
 import { chatService } from './services/chat.service';
 
 const router = Router();
