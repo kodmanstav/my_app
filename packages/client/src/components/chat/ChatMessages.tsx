@@ -2,8 +2,9 @@ import { useEffect, useRef } from 'react';
 import ReactMarkDown from 'react-markdown';
 
 export type Message = {
-   content: string;
    role: 'user' | 'bot';
+   content?: string;
+   json?: unknown;
 };
 
 type Props = {
@@ -17,28 +18,25 @@ const ChatMessages = ({ messages }: Props) => {
       lastMessageRef.current?.scrollIntoView({ behavior: 'smooth' });
    }, [messages]);
 
-   const onCopyMessage = (e: React.ClipboardEvent<HTMLParagraphElement>) => {
-      const selection = window.getSelection()?.toString().trim();
-      if (selection) {
-         e.preventDefault();
-         e.clipboardData.setData('text/plain', selection);
-      }
-   };
-
    return (
       <div className="flex flex-col gap-3">
          {messages.map((message, index) => (
             <div
                key={index}
-               onCopy={onCopyMessage}
                ref={index === messages.length - 1 ? lastMessageRef : null}
-               className={`px-3 py-1 max-w-md rounded-xl ${
+               className={`max-w-md rounded-xl px-3 py-2 ${
                   message.role === 'user'
-                     ? ' text-black self-end bg-blue-600'
-                     : ' text-black bg-gray-100 self-start'
+                     ? 'self-end bg-blue-600 text-white'
+                     : 'self-start bg-gray-100 text-black'
                }`}
             >
-               <ReactMarkDown>{message.content}</ReactMarkDown>
+               {typeof message.content === 'string' && (
+                  <ReactMarkDown>{message.content}</ReactMarkDown>
+               )}
+
+               {message.json !== undefined && (
+                  <pre>{JSON.stringify(message.json, null, 2)}</pre>
+               )}
             </div>
          ))}
       </div>

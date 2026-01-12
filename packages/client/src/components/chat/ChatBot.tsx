@@ -34,10 +34,8 @@ const ChatBot = () => {
             prompt,
             conversationId: conversationId.current,
          });
-         setMessages((prev) => [
-            ...prev,
-            { content: data.message, role: 'bot' },
-         ]);
+         setMessages((prev) => [...prev, { role: 'bot', json: data }]);
+
          notificationAudio.play();
       } catch (error) {
          console.error(error);
