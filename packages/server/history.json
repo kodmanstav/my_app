@@ -377,5 +377,54 @@
       }
     ],
     "lastResponseId": "resp_0a413f98feb038b60069653a485cbc81a2b8a223d37d7ad977"
+  },
+  "e79dc26f-b60d-46ce-82e6-5e4edef844a6": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "חיפה"
+      },
+      {
+        "role": "assistant",
+        "content": "חיפה: 14.1°C, ממטרים, רוח 29.1 קמ\"ש"
+      },
+      {
+        "role": "user",
+        "content": "אילת"
+      },
+      {
+        "role": "assistant",
+        "content": "אילת: 16.6°C, שמשי, רוח 11.9 קמ\"ש"
+      }
+    ]
+  },
+  "8aa7d122-ed07-41f1-bdd0-293422201137": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "חיפה "
+      },
+      {
+        "role": "assistant",
+        "content": "חיפה: 14.1°C, ממטרים, רוח 28.6 קמ\"ש"
+      },
+      {
+        "role": "user",
+        "content": "שלום"
+      },
+      {
+        "role": "assistant",
+        "content": "הזרמת שיחה התחילה. איך אפשר לעזור באיטרציה הבאה?"
+      },
+      {
+        "role": "user",
+        "content": "hello"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi! The connection is live. How can I optimize your data flow today?"
+      }
+    ],
+    "lastResponseId": "resp_0c28508f4aa89d540069653e3324b481968560496fbc603369"
   }
 }

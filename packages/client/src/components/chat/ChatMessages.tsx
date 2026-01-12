@@ -38,7 +38,9 @@ const ChatMessages = ({ messages }: Props) => {
                      : 'bg-gray-100 text-black self-start'
                }`}
             >
-               <ReactMarkDown>{message.content}</ReactMarkDown>
+               <div dir="auto">
+                  <ReactMarkDown>{message.content}</ReactMarkDown>
+               </div>
             </div>
          ))}
       </div>
