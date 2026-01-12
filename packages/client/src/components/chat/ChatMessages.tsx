@@ -3,8 +3,7 @@ import ReactMarkDown from 'react-markdown';
 
 export type Message = {
    role: 'user' | 'bot';
-   content?: string;
-   json?: unknown;
+   content: string;
 };
 
 type Props = {
@@ -39,13 +38,7 @@ const ChatMessages = ({ messages }: Props) => {
                      : 'bg-gray-100 text-black self-start'
                }`}
             >
-               {typeof message.content === 'string' && (
-                  <ReactMarkDown>{message.content}</ReactMarkDown>
-               )}
-
-               {message.json !== undefined && (
-                  <pre>{JSON.stringify(message.json, null, 2)}</pre>
-               )}
+               <ReactMarkDown>{message.content}</ReactMarkDown>
             </div>
          ))}
       </div>

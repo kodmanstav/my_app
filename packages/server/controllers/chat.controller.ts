@@ -10,6 +10,7 @@ const chatSchema = z.object({
       .max(1000, 'Prompt is too long. (max 1000 characters)'),
    conversationId: z.uuid(),
 });
+
 export const chatController = {
    async sendMessage(req: Request, res: Response) {
       const parseResult = chatSchema.safeParse(req.body);

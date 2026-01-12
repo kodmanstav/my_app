@@ -293,5 +293,89 @@
       }
     ],
     "lastResponseId": "resp_053f81cdbe2500d0006965191b8ad48194847e5137b4158a52"
+  },
+  "4be16400-1afd-402b-957b-effbbe486e1a": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "שלום"
+      },
+      {
+        "role": "assistant",
+        "content": "שלום. איך אפשר לעזור? יש לך נתונים להזין או תהליך שצריך לארגן מחדש ב\"צנרת\"?"
+      }
+    ],
+    "lastResponseId": "resp_02a870e9c5c19e00006965347d396881929a047ae537f130bb"
+  },
+  "c7d02279-c70d-447f-bdc7-18fc0f594634": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "שלום"
+      },
+      {
+        "role": "assistant",
+        "content": "שלום. איך אפשר לעזור? תרגיש חופשי להעביר לי את ה-Data Pipeline של השאלה שלך."
+      },
+      {
+        "role": "user",
+        "content": "חיפה"
+      },
+      {
+        "role": "assistant",
+        "content": "חיפה, חיפה: 14.2°C, ממטרים קלים, רוח 25 קמ\"ש"
+      },
+      {
+        "role": "user",
+        "content": "היי"
+      },
+      {
+        "role": "assistant",
+        "content": "היי! אם יש לך שאלה או שאתה רוצה להעביר נתונים, תן לי את הסכמה ואעזור להריץ את ה-Query."
+      }
+    ],
+    "lastResponseId": "resp_0b3d1f4f15ee3bed006965367523d481a0bc3d87b282b07e2e"
+  },
+  "ab5483c5-412b-4cef-a69f-79df120555a8": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "שלום"
+      },
+      {
+        "role": "assistant",
+        "content": "שלום. איך אפשר לעזור? תרגיש חופשי לשפוך נתונים לתוך הצינור – אני כאן לעשות ETL לכל שאלה שלך."
+      }
+    ],
+    "lastResponseId": "resp_057f69dac927086a00696537b9baf4819796c2d693fc1d098e"
+  },
+  "d0a2eba9-591d-45fd-bc3a-78d17f9ebe24": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "hello"
+      },
+      {
+        "role": "assistant",
+        "content": "Hello. Ready to process your queries—what data are we piping through today?"
+      },
+      {
+        "role": "user",
+        "content": "haifa"
+      },
+      {
+        "role": "assistant",
+        "content": "Haifa, Haifa: 14.1°C, Showers, wind 29.1 km/h"
+      },
+      {
+        "role": "user",
+        "content": "I'm flying to London. should I take a coat?"
+      },
+      {
+        "role": "assistant",
+        "content": "London, England: 10.5°C, Cloudy, wind 13.3 km/h"
+      }
+    ],
+    "lastResponseId": "resp_0a413f98feb038b60069653a485cbc81a2b8a223d37d7ad977"
   }
 }
