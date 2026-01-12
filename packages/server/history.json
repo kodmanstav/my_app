@@ -104,209 +104,19 @@
       {
         "role": "assistant",
         "content": "חיפה, חיפה: 17°C, בהיר ברובו, רוח 33.3 קמ\"ש"
-      },
-      {
-        "role": "user",
-        "content": "חיפה"
-      },
-      {
-        "role": "assistant",
-        "content": "חיפה, חיפה: 17°C, בהיר ברובו, רוח 32.8 קמ\"ש"
       }
     ],
     "lastResponseId": "5bda0634-9066-4609-b2d3-7ad95cddf6f9"
   },
-  "72276898-85b5-41c6-81d2-c49ca56edebd": {
+  "c0426a24-2e3f-4d65-ae61-fa88f6cf079b": {
     "messages": [
       {
         "role": "user",
-        "content": "haifa"
+        "content": "חיפה"
       },
       {
         "role": "assistant",
-        "content": "Haifa, Haifa: 17°C, Mostly clear, wind 32.8 km/h"
-      }
-    ]
-  },
-  "32569200-808b-4f71-904f-ac05570c0ec3": {
-    "messages": [
-      {
-        "role": "user",
-        "content": "hi"
-      },
-      {
-        "role": "assistant",
-        "content": "Pipeline initialized. Ready to process your queries. What data (question) would you like to stream through today?"
-      },
-      {
-        "role": "user",
-        "content": "haifa"
-      },
-      {
-        "role": "assistant",
-        "content": "Haifa, Haifa: 16.9°C, Mostly clear, wind 32.6 km/h"
-      }
-    ],
-    "lastResponseId": "resp_03c61fa563a01f1600696508bb184c819e826ea2de2f91d821"
-  },
-  "8110ed24-2e25-4805-a44a-19c3ec565768": {
-    "messages": [
-      {
-        "role": "user",
-        "content": "haifa"
-      },
-      {
-        "role": "assistant",
-        "content": "Haifa, Haifa: 16.9°C, Mostly clear, wind 32.6 km/h"
-      }
-    ]
-  },
-  "8ecd0403-5b3c-45cf-8cc6-56d83efabdbd": {
-    "messages": [
-      {
-        "role": "user",
-        "content": "haifa"
-      },
-      {
-        "role": "assistant",
-        "content": "Haifa, Haifa: 16.9°C, Cloudy, wind 32.1 km/h"
-      }
-    ]
-  },
-  "5c8b10da-11a6-4cce-8ee0-5f611018749b": {
-    "messages": [
-      {
-        "role": "user",
-        "content": "haif"
-      },
-      {
-        "role": "assistant",
-        "content": "Haifa, Haifa: 16.9°C, Cloudy, wind 32.1 km/h"
-      },
-      {
-        "role": "user",
-        "content": "HI"
-      },
-      {
-        "role": "assistant",
-        "content": "Hello. Ready to debug your data pipeline or optimize your query. What's in your backlog?"
-      },
-      {
-        "role": "user",
-        "content": "היי"
-      },
-      {
-        "role": "assistant",
-        "content": "היי. איך אפשר לעזור? רוצה להעלות שאלה מהתור שלך או שיש תקלה ב-Pipeline שצריך לפתור?"
-      },
-      {
-        "role": "user",
-        "content": "היי"
-      },
-      {
-        "role": "assistant",
-        "content": "היי שוב. נראה שיש לופ שחוזר על עצמו—בדיוק כמו תהליך ETL שנתקע בריצה אינסופית. יש משהו חדש שאפשר לעזור בו, או שהפייפליין עוד עובד על אותו הדאטה?"
-      },
-      {
-        "role": "user",
-        "content": "הי"
-      },
-      {
-        "role": "assistant",
-        "content": "הי, נראה שההודעות שלך ממשיכות להישלח בלופ, כמו קריאות API שחוזרות עם אותה התשובה. אם יש שאלה חדשה או בעיה אחרת ב-Dataflow, אני כאן לעזור לייעל את התהליך."
-      },
-      {
-        "role": "user",
-        "content": "hi"
-      },
-      {
-        "role": "assistant",
-        "content": "Hi. I see your input keeps repeating—like a broken scheduler re-running the same job. If you’ve got a new query or want to troubleshoot your workflow, just drop it in the queue."
-      },
-      {
-        "role": "user",
-        "content": "hi"
-      },
-      {
-        "role": "assistant",
-        "content": "Still getting the same input—feels like a batch job stuck in a retry loop. If you want to process a new task or need a schema change, just let me know."
-      }
-    ],
-    "lastResponseId": "resp_09abf407be3f205e006965104ee93881a29553c3e49928e3a7"
-  },
-  "202d7d4b-74d7-41aa-836b-08f8d343b790": {
-    "messages": [
-      {
-        "role": "user",
-        "content": "haifa"
-      },
-      {
-        "role": "assistant",
-        "content": "Haifa, Haifa: 16.4°C, Cloudy, wind 31.1 km/h"
-      },
-      {
-        "role": "user",
-        "content": "haifa"
-      },
-      {
-        "role": "assistant",
-        "content": "Haifa, Haifa: 16.4°C, Cloudy, wind 31.1 km/h"
-      }
-    ]
-  },
-  "cd24c20b-ed2d-41ce-a29f-142c53eb5902": {
-    "messages": [
-      {
-        "role": "user",
-        "content": "haifa"
-      },
-      {
-        "role": "assistant",
-        "content": "Haifa, Haifa: 16.4°C, Cloudy, wind 31.1 km/h"
-      }
-    ]
-  },
-  "4895409c-b921-489e-b148-d5fc862e59ba": {
-    "messages": [
-      {
-        "role": "user",
-        "content": "haifa"
-      },
-      {
-        "role": "assistant",
-        "content": "Haifa, Haifa: 16.4°C, Cloudy, wind 31.1 km/h"
-      }
-    ]
-  },
-  "97dd8c42-db13-4e63-9a90-59f98b048d0b": {
-    "messages": [
-      {
-        "role": "user",
-        "content": "haifa"
-      },
-      {
-        "role": "assistant",
-        "content": "Haifa, Haifa: 15.8°C, Cloudy, wind 30.3 km/h"
-      }
-    ]
-  },
-  "b025234d-b16a-4f99-87b6-3ceb854036f2": {
-    "messages": [
-      {
-        "role": "user",
-        "content": "haifa"
-      },
-      {
-        "role": "assistant",
-        "content": "Haifa, Haifa: 15.8°C, Cloudy, wind 30.3 km/h"
-      },
-      {
-        "role": "user",
-        "content": "haifa"
-      },
-      {
-        "role": "assistant",
-        "content": "Weather service is not configured"
+        "content": "Could not find city \"חיפה\". Try another name."
       },
       {
         "role": "user",
@@ -314,8 +124,174 @@
       },
       {
         "role": "assistant",
-        "content": "Weather service is not configured"
+        "content": "Could not find city \"חיפה\". Try another name."
+      },
+      {
+        "role": "user",
+        "content": "היי"
+      },
+      {
+        "role": "assistant",
+        "content": "היי. מה תרצה להעביר בצינור הנתונים היום?"
+      },
+      {
+        "role": "user",
+        "content": "hello"
+      },
+      {
+        "role": "assistant",
+        "content": "Hello! Ready to join your data streams. What’s your query payload today?"
+      }
+    ],
+    "lastResponseId": "resp_0c80a9025d42b501006964fd5f91f0819694bf81b2abbc44ae"
+  },
+  "123e4567-e89b-12d3-a456-426614174000": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is the capital of France?"
+      },
+      {
+        "role": "assistant",
+        "content": "That’s a low-latency query: the capital of France is Paris. No ETL required—direct lookup from the global geography schema."
+      },
+      {
+        "role": "user",
+        "content": "חיפה"
+      },
+      {
+        "role": "assistant",
+        "content": "Could not find city \"חיפה\". Try another name."
+      },
+      {
+        "role": "user",
+        "content": "Haifa"
+      },
+      {
+        "role": "assistant",
+        "content": "Haifa, Haifa: 17.1°C, Mostly clear, wind 33.9 km/h"
+      },
+      {
+        "role": "user",
+        "content": "היי"
+      },
+      {
+        "role": "assistant",
+        "content": "Hey! How can I help you optimize your data pipeline today?"
+      },
+      {
+        "role": "user",
+        "content": "hello"
+      },
+      {
+        "role": "assistant",
+        "content": "Hello! Ready to queue up your next query. What’s in your data pipeline today?"
+      },
+      {
+        "role": "user",
+        "content": "חיפה"
+      },
+      {
+        "role": "assistant",
+        "content": "חיפה, חיפה: 16.9°C, בהיר ברובו, רוח 32.6 קמ\"ש"
+      },
+      {
+        "role": "user",
+        "content": "2/3*50"
+      },
+      {
+        "role": "assistant",
+        "content": "Result: 33.33333333333333"
+      },
+      {
+        "role": "user",
+        "content": "USD"
+      },
+      {
+        "role": "assistant",
+        "content": "Official USD rate is 3.7500 ILS."
+      },
+      {
+        "role": "user",
+        "content": "USD"
+      },
+      {
+        "role": "assistant",
+        "content": "Official USD rate is 3.7500 ILS."
+      },
+      {
+        "role": "user",
+        "content": "מי יותר צודק בפוליטיקה? ימין או שמאל?"
+      },
+      {
+        "role": "assistant",
+        "content": "I cannot process this request: due to safety protocols."
+      }
+    ],
+    "lastResponseId": "resp_051f29fdb6250c530069650fcccf008195a477e2642033051a"
+  },
+  "42499b04-7d38-47ba-b2d7-ea67cf5a07ad": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Haifa"
+      },
+      {
+        "role": "assistant",
+        "content": "Haifa, Haifa: 17.1°C, Mostly clear, wind 33.9 km/h"
       }
     ]
+  },
+  "8fbc356f-2761-4fff-aed4-8da53868561b": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "היי"
+      },
+      {
+        "role": "assistant",
+        "content": "היי. איך אפשר לעזור? תגדיר את הדרישות שלך, כמו שמגדירים סכמת נתונים, ואנסה לעזור ביעילות."
+      }
+    ],
+    "lastResponseId": "resp_0010e052e40330bf0069650736c54c819c9b91353677039ba6"
+  },
+  "400afdb8-4b58-4e3a-906c-c14e657141de": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "שלום"
+      },
+      {
+        "role": "assistant",
+        "content": "שלום. איך אפשר לעזור? תרגיש חופשי לדחוף נתונים, אני אנסה לעבד אותם ב-throughput גבוה."
+      }
+    ],
+    "lastResponseId": "resp_01e1854c79d268bb00696517d2f3d08193a2b6d30131714f63"
+  },
+  "f6a5aeec-537a-4e85-86d9-d8f68b7433a1": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "hello"
+      },
+      {
+        "role": "assistant",
+        "content": "Hello. Ready to run some queries through your data pipeline? What can I help you process today?"
+      }
+    ],
+    "lastResponseId": "resp_08da71bf741ad8ae00696518ac40d881a283cd2a301854b8af"
+  },
+  "ccfc1f1b-e3c1-4fbc-baaf-b795ce67b099": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "hello"
+      },
+      {
+        "role": "assistant",
+        "content": "Hello. Ready to start the pipeline—what data (questions) are you looking to process today?"
+      }
+    ],
+    "lastResponseId": "resp_053f81cdbe2500d0006965191b8ad48194847e5137b4158a52"
   }
 }
